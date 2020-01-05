@@ -77,3 +77,17 @@ yarn workspaces vx.x.x
     "mismatchedWorkspaceDependencies": []
   }, ... }
 ```
+
+## Some packages aren't working (nohoist)
+@todo
+
+## Useful links
+- [Introducing yarn workspaces](https://yarnpkg.com/blog/2017/08/02/introducing-workspaces/)
+- [Yarn workspaces documentation](https://yarnpkg.com/lang/en/docs/workspaces/)
+- [Nohoist docs](https://yarnpkg.com/blog/2018/02/15/nohoist/)
+
+## Projects using yarn workspace
+@todo
+- https://github.com/isthatcentered/unicorn/ (disclaimer, this is mine)
+
+
