@@ -78,13 +78,39 @@ yarn workspaces vx.x.x
   }, ... }
 ```
 
-## Some packages aren't working (nohoist)
-@todo
+## Nohoist
+There are chances you will end up with an error of this kind `A different version of {package_name} was detected higher up in the tree` (this one is from create-react-app preflight checks).
+
+If nothing else helps, add SKIP_PREFLIGHT_CHECK=true to an .env file in your project.
+
+You can use the [`nohoist`](https://yarnpkg.com/blog/2018/02/15/nohoist/) option to avoid sharing problematic dependencies between packages.
+
+```diff
+# root package.json
+{
+   ...
+   "workspaces": {
+      "packages": [
+         ...
+      ],
++   "nohoist": [
++      "**/jest", // For any package, don't hoist jest
++      "**/jest*", // For any package, don't hoist any package starting with "jest" Ex: jest-then, jest-when, ...
++      "**/jest/**", // For any package, don't hoist any jest sub package Ex: jest/core
++      "my-package-a/jest", // For package "my-package-a", don't hoist jest
++   ]
+   },
+   ...
+}
+```
+
+[More about glob patterns](http://www.globtester.com/)
 
 ## Useful links
 - [Introducing yarn workspaces](https://yarnpkg.com/blog/2017/08/02/introducing-workspaces/)
 - [Yarn workspaces documentation](https://yarnpkg.com/lang/en/docs/workspaces/)
 - [Nohoist docs](https://yarnpkg.com/blog/2018/02/15/nohoist/)
+- [Glob patterns tester](http://www.globtester.com/)
 
 ## Projects using yarn workspace
 @todo
