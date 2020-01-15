@@ -57,7 +57,7 @@ $ cd my-package && npm init -y      # Generate package definition
 $ yarn workspace package-a add package-b@* // "package-a" and "package-b" matche the package's package.json "name" key
 ```
 
-## Debugging
+## Checking dependencies between your workspaces
 ```bash
 $ yarn workspaces info # Displays the workspaces dependeny tree of your project
 
@@ -78,12 +78,12 @@ yarn workspaces vx.x.x
   }, ... }
 ```
 
-## Nohoist
-There are chances you will end up with an error of this kind `A different version of {package_name} was detected higher up in the tree` (this one is from create-react-app preflight checks).
+## Nohoist: Fixing dependency errors
+Chances are one day you'll end up with an error of this kind: `Module not found` or `A different version of {package_name} was detected higher up in the tree`.
 
-If nothing else helps, add SKIP_PREFLIGHT_CHECK=true to an .env file in your project.
+That means the sharing of {package_name} isn't working out.
 
-You can use the [`nohoist`](https://yarnpkg.com/blog/2018/02/15/nohoist/) option to avoid sharing problematic dependencies between packages.
+Use [`nohoist`](https://yarnpkg.com/blog/2018/02/15/nohoist/) to prevent sharing of specific packages between workspaces.
 
 ```diff
 # root package.json
